@@ -144,7 +144,7 @@ public class Main {
             moto2.setModelName("moto_model1", "R1");
             moto2.setModelName("moto_model2", "RS1000");
             //moto2.setModelName("RS1000", "RS1000"); //Exception
-            //moto2.setModelName("RS1000", "moto_model2"); //Exception
+            //moto2.setModelName("Model", " x x"); //Exception
             moto2.setPriceByName("R1", 1000000.0);
 
             System.out.println("====Get and Change Model price====");

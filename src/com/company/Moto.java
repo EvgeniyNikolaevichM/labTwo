@@ -25,25 +25,25 @@ public class Moto implements ITransport {
             return modelName;
         }
 
-        private void setModelName(String newModelName) {
-            modelName = newModelName;
-        }
+//        private void setModelName(String newModelName) {
+//            modelName = newModelName;
+//        }
 
         private Double getModelPrice() {
             return modelPrice;
         }
 
-        private void setModelPrice(Double newModelPrice) {
-            modelPrice = newModelPrice;
-        }
+//        private void setModelPrice(Double newModelPrice) {
+//            modelPrice = newModelPrice;
+//        }
 
-        public Model(String modelName, Double price) {
+        public Model(String modelName, Double modelPrice) {
             this.modelName = modelName;
             this.modelPrice = modelPrice;
         }
     }
 
-    private Model head = new Model("Opp", 45d);
+    private Model head = new Model("Model", 100d);
 
     {
         size = 1;
@@ -70,9 +70,9 @@ public class Moto implements ITransport {
 
     public String[] getArrayModelsNames() {
         Model m = head;
-        String[] NamesArray = new String[size];
-        for (int i = 0; i < size - 1; i++) {
-            NamesArray[i] = m.next.getModelName();
+        String[] NamesArray = new String[size - 1];
+        for (int i = 1; i < size; i++) {
+            NamesArray[i - 1] = m.next.getModelName();
             m = m.next;
         }
         return NamesArray;
@@ -80,7 +80,7 @@ public class Moto implements ITransport {
 
     public Double getPriceByName(String modelName) throws NoSuchModelNameException {
         if (getModelByName(modelName) != null) {
-            for (int i = 1; i <= size; i++) {
+            for (int i = 1; i < size; i++) {
                 if (getModelByIndex(i).getModelName().equals(modelName))
                     return getModelByIndex(i).modelPrice;
             }
@@ -114,8 +114,8 @@ public class Moto implements ITransport {
     }
 
     public Double[] getArrayModelsPrice() {
-        Double[] pricesArray = new Double[size];
-        for (int i = 1; i <= size - 1; i++)
+        Double[] pricesArray = new Double[size - 1];
+        for (int i = 1; i < size; i++)
             pricesArray[i - 1] = getModelByIndex(i).getModelPrice();
         return pricesArray;
     }
@@ -152,7 +152,7 @@ public class Moto implements ITransport {
         if (getModelByName(modelName) != null) {
             Model m;
             m = head;
-            for (int i = 1; i <= size; i++) {
+            for (int i = 1; i < size; i++) {
                 if (getModelByIndex(i).getModelName().equals(modelName)) {
                     m = getModelByIndex(i);
                     break;
@@ -170,7 +170,7 @@ public class Moto implements ITransport {
     }
 
     public int getCount() {
-        return size;
+        return size - 1;
     }
 
     public Moto(String mark, int modelsCount){
